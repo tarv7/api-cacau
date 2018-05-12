@@ -19,6 +19,8 @@ class produtosController extends Controller
         for($i = 0; $i < count($produtos); $i++){
             $produtos[$i]->nomeProdutor = Usuario::where('id', '=', $produtos[$i]->id_produtor)
                                                     ->get()->first()->nome;
+            $produtos[$i]->idProdutor = Usuario::where('id', '=', $produtos[$i]->id_produtor)
+                                                    ->get()->first()->id;
             $produtos[$i]->curtidas = $j++;
         }
 
