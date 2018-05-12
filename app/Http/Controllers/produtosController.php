@@ -15,13 +15,13 @@ class produtosController extends Controller
     public function todos(){
         $produtos = Produtos::all();
 
-        $j = 0;
+        //$j = 0;
         for($i = 0; $i < count($produtos); $i++){
             $produtos[$i]->nomeProdutor = Usuario::where('id', '=', $produtos[$i]->id_produtor)
                                                     ->get()->first()->nome;
             $produtos[$i]->idProdutor = Usuario::where('id', '=', $produtos[$i]->id_produtor)
                                                     ->get()->first()->id;
-            $produtos[$i]->curtidas = $j++;
+            //$produtos[$i]->curtidas = $j++;
         }
 
         return response()->json($produtos, 200);
