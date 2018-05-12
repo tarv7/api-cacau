@@ -41,3 +41,40 @@ Route::group(['prefix' => 'api'], function(){
     Route::post('curtida/', 'CurtidaController@curtir');
     //Route::get('curtida/', 'CurtidaController@devolve');
 });
+
+Route::group(array('prefix' => 'api'), function(){
+    Route::get('/', function(){
+        return response()->json(['message' => 'Cacau API', 'status' => 'Conectado']);
+    });
+ 
+    //get produtores
+    Route::get('usuarios', 'usuarioController@todos'); // v
+    //get produtor
+    Route::get('usuarios/{id}', 'usuarioController@produtor'); // v
+
+    //get produtos geral
+    Route::get('produtos', 'produtosController@todos'); // v
+    //get produtos especificos de um produtor
+    Route::get('produtos/{id}', 'produtosController@deUmProdutor'); // v
+    //get produto especifico de um produtor
+    Route::get('produtos/{id}/{id_produto}', 'produtosController@especifico'); // x
+
+    //post cadastrar usuario, mas nem precisa disso, vai cadastrar na mao mesmo
+    Route::post('cadUsuario', 'usuarioController@cadastrar'); // v
+    //get login usuario
+    Route::post('loginUsuario', 'usuarioController@logar'); // v
+
+
+    //get cadastrar produtos
+    //post cadastrar evento
+    //get eventos
+
+
+
+    
+ });
+ 
+ Route::get('/', function(){
+    return redirect('api');
+ });
+ 
