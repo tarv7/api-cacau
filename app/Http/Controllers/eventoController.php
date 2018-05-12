@@ -37,6 +37,18 @@ class eventoController extends Controller
         }
     }
 
+    public function desconfirmar(Request $input){
+        $evento = Evento::where('id', '=', $input->id)->get()->first();
+        if($evento && $evento->confirmaram > 0){
+            $evento->confirmaram--;
+            $evento->save();
+
+            return response()->json(['mensagem' => 'desconfirmou'], 200);
+        }else{
+            return response()->json(['mensagem' => 'evento invalido'], 404);
+        }
+    }
+
     public function destaque(Request $input){
         $eventos = Evento::where('destaque', '=', 1)->get();
 
@@ -56,7 +68,7 @@ class eventoController extends Controller
         $a = [];
         foreach($cidades as $b)
             $a[] = $b;
-            
+
         return $a;
     }
 }

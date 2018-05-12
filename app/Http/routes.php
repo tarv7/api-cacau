@@ -72,6 +72,8 @@ Route::group(array('prefix' => 'api'), function(){
     Route::get('eventosDestaque', 'eventoController@destaque'); // v
     //post confirmar presenca em evento
     Route::post('vouIr/{id}', 'eventoController@confirmar'); // v
+    //post desconfirmar presenca em evento
+    Route::post('naoVouIr/{id}', 'eventoController@desconfirmar'); // v
     // get cidades de eventos
     Route::get('eventosCidades', 'eventoController@cidades');
 
