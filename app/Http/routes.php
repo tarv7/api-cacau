@@ -57,19 +57,17 @@ Route::group(array('prefix' => 'api'), function(){
     //get produtos especificos de um produtor
     Route::get('produtos/{id}', 'produtosController@deUmProdutor'); // v
     //get produto especifico de um produtor
-    Route::get('produtos/{id}/{id_produto}', 'produtosController@especifico'); // x
+    Route::get('produtos/{id}/{id_produto}', 'produtosController@especifico'); // v
 
     //post cadastrar usuario, mas nem precisa disso, vai cadastrar na mao mesmo
     Route::post('cadUsuario', 'usuarioController@cadastrar'); // v
     //get login usuario
     Route::post('loginUsuario', 'usuarioController@logar'); // v
 
-
-    //get cadastrar produtos
-    //post cadastrar evento
-    //get eventos
-
-
+    //get todos eventos
+    Route::get('eventos', 'eventoController@todos'); // v
+    // get eventos de uma cidade
+    Route::get('eventos/{cidade}', 'eventoController@deUmaCidade'); // v
 
     
  });

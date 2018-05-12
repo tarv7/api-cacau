@@ -29,14 +29,14 @@ class produtosController extends Controller
     }
 
     public function especifico(Request $input){
-        $produto = Produto::where('id', '=', $input->id_produto)
+        $produto = Produtos::where('id', '=', $input->id_produto)
                             ->where('id_produtor', '=', $input->id)
                             ->get()->first();
 
-        if($usuario){
-        return response()->json(['mensagem' => 'valido'], 200);
+        if($produto){
+            return response()->json($produto, 200);
         }else{
-        return response()->json(['mensagem' => 'invalido'], 404);
+            return response()->json(['mensagem' => 'invalido'], 404);
         }
     }
 }
