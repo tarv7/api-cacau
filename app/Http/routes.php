@@ -68,6 +68,14 @@ Route::group(array('prefix' => 'api'), function(){
     Route::get('eventos', 'eventoController@todos'); // v
     // get eventos de uma cidade
     Route::get('eventos/{cidade}', 'eventoController@deUmaCidade'); // v
+    //post confirmar presenca em evento
+    Route::post('vouIr/{id}', 'eventoController@confirmar');
+
+    //post curtidas
+    Route::post('curtidas/{id}', 'curtidaController@curtir');
+    //get curtidas
+    Route::get('curtidas/{id}', 'curtidaController@quantidade');
+
 
     
  });

@@ -6,8 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curtida extends Model
 {
-    protected $fillable = [
-        'id_facebook',
-        'id_avaliacao'
-    ];
+    public $table = "tb_curtidas";
 }

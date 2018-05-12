@@ -24,4 +24,16 @@ class eventoController extends Controller
         else
             return response()->json([], 404);
     }
+
+    public function confirmar(Request $input){
+        $evento = Evento::where('id', '=', $input->id)->get()->first();
+        if($evento){
+            $evento->confirmaram++;
+            $evento->save();
+
+            return response()->json(['mensagem' => 'confirmou'], 200);
+        }else{
+            return response()->json(['mensagem' => 'evento invalido'], 404);
+        }
+    }
 }
