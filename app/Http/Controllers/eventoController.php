@@ -42,4 +42,21 @@ class eventoController extends Controller
 
         return response()->json($eventos, 200);
     }
+
+    public function cidades(Request $input){
+        $eventos = Evento::all();
+
+        $cidades = [];
+        for($i = 0; $i < count($eventos); $i++){
+            $cidades[$i] = $eventos[$i]->cidade;
+        }
+
+        $cidades = array_unique($cidades);
+
+        $a = [];
+        foreach($cidades as $b)
+            $a[] = $b;
+            
+        return $a;
+    }
 }
