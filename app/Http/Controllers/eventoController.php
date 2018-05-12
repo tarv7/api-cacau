@@ -36,4 +36,10 @@ class eventoController extends Controller
             return response()->json(['mensagem' => 'evento invalido'], 404);
         }
     }
+
+    public function destaque(Request $input){
+        $eventos = Evento::where('destaque', '=', 1)->get();
+
+        return response()->json($eventos, 200);
+    }
 }
