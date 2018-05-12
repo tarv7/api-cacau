@@ -15,6 +15,11 @@ class produtosController extends Controller
     public function todos(){
         $produtos = Produtos::all();
 
+        for($i = 0; $i < count($produtos); $i++){
+            $produtos[$i]->nomeProdutor = Usuario::where('id', '=', $produtos[$i]->id_produtor)
+                                                    ->get()->first()->nome;
+        }
+
         return response()->json($produtos, 200);
     }
 
