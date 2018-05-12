@@ -19,7 +19,12 @@ class usuarioController extends Controller
     }
 
     public function todos(){
-        return response()->json(Usuario::all(), 200);
+        $usuario = Usuario::all();
+        foreach ($usuario as $a){ 
+            $a->produtor = $a->nome;
+            unset($a->nome);
+        }
+        return response()->json($usuario, 200);
     }
 
     public function produtor(Request $input){

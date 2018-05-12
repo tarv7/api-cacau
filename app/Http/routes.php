@@ -77,10 +77,11 @@ Route::group(array('prefix' => 'api'), function(){
     // get cidades de eventos
     Route::get('eventosCidades', 'eventoController@cidades');
 
-    //post curtidas
-    Route::post('curtidas/{id}', 'curtidaController@curtir');
-    //get curtidas
-    Route::get('curtidas/{id}', 'curtidaController@quantidade');
+    //post curtidas produtores e produtos
+    Route::post('curtidas/{id_produtor}', 'curtidaController@curtirProdutor');
+    Route::post('curtidas/{id_produtor}/{id_produto}', 'curtidaController@curtirProduto');
+    Route::post('descurtidas/{id_produtor}', 'curtidaController@descurtirProdutor');
+    Route::post('descurtidas/{id_produtor}/{id_produto}', 'curtidaController@descurtirProduto');
 
 
     
